@@ -1,0 +1,30 @@
+{
+  "name": "resoauth/drupal-soca-plugin",
+  "description": "SOCA CIMD OpenID Connect integration for Drupal",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^8.3",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "firebase/php-jwt": "^7.2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "RESOAuth\\Soca\\": "lib/soca/src/",
+      "RESOAuth\\Soca\\Bridge\\": "lib/host/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "php tests/bridge.php",
+      "php tests/core.php"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.3.0"
+    }
+  }
+}

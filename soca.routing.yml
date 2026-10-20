@@ -1,0 +1,35 @@
+soca.settings:
+  path: '/admin/config/people/soca'
+  defaults:
+    _form: '\Drupal\soca\Form\SettingsForm'
+    _title: 'SOCA sign-in'
+  requirements:
+    _permission: 'administer soca'
+soca.login:
+  path: '/soca/login'
+  defaults:
+    _controller: '\Drupal\soca\Controller\LoginController::login'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
+soca.callback:
+  path: '/soca/callback'
+  defaults:
+    _controller: '\Drupal\soca\Controller\LoginController::callback'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
+soca.metadata:
+  path: '/soca/client.json'
+  defaults:
+    _controller: '\Drupal\soca\Controller\LoginController::metadata'
+  requirements:
+    _access: 'TRUE'
+soca.jwks:
+  path: '/soca/jwks.json'
+  defaults:
+    _controller: '\Drupal\soca\Controller\LoginController::jwks'
+  requirements:
+    _access: 'TRUE'

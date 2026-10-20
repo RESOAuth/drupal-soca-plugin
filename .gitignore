@@ -1,0 +1,6 @@
+/vendor/
+/demo/.runtime/
+/build/
+*.pem
+.env
+__pycache__/

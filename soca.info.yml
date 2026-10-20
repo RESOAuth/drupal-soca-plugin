@@ -1,0 +1,8 @@
+name: SOCA CIMD sign-in
+type: module
+description: Secure, explicit-link OpenID Connect sign-in with CIMD.
+package: Authentication
+core_version_requirement: ^10.3 || ^11
+configure: soca.settings
+dependencies:
+  - drupal:user
