@@ -9,9 +9,9 @@ product = root.name.removesuffix('-soca-plugin')
 build = root / 'build'
 build.mkdir(exist_ok=True)
 files = []
-for directory in ['lib', 'vendor', 'src', 'classes', 'db', 'lang', 'cli']:
+for directory in ['lib', 'vendor', 'src', 'classes', 'db', 'lang', 'cli', 'docs']:
     files.extend(p for p in (root / directory).rglob('*') if p.is_file())
-files.extend(p for p in root.iterdir() if p.is_file() and (p.suffix in ['.php', '.yml', '.module', '.install'] or p.name in ['README.md', 'LICENSE', 'composer.json', 'composer.lock']))
+files.extend(p for p in root.iterdir() if p.is_file() and (p.suffix in ['.php', '.yml', '.module', '.install'] or p.name in ['README.md', 'LICENSE', 'SECURITY.md', 'composer.json', 'composer.lock']))
 package = build / f'{product}-soca-0.1.0.zip'
 with ZipFile(package, 'w', ZIP_DEFLATED) as archive:
     for path in sorted(set(files)):
