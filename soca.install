@@ -1,0 +1,36 @@
+<?php
+
+/** @file Database lifecycle. Local users and signing keys are never deleted. */
+
+function soca_schema(): array {
+    return [
+        'soca_links' => [
+            'description' => 'Explicit issuer and subject identity links.',
+            'fields' => [
+                'identity' => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE],
+                'uid' => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+                'created' => ['type' => 'int', 'not null' => TRUE],
+            ],
+            'primary key' => ['identity'], 'unique keys' => ['soca_uid' => ['uid']],
+        ],
+        'soca_transactions' => [
+            'description' => 'Minimal shared, atomically consumed replay guard.',
+            'fields' => [
+                'statehash' => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE],
+                'expires' => ['type' => 'int', 'not null' => TRUE],
+            ],
+            'primary key' => ['statehash'], 'indexes' => ['expiry' => ['expires']],
+        ],
+    ];
+}
+
+function soca_uninstall(): void {
+    \Drupal::state()->deleteMultiple(['soca.documents', 'soca.login']);
+}
+
+function soca_requirements($phase): array {
+    if ($phase !== 'runtime') { return []; }
+    return ['soca_recovery' => ['title' => t('SOCA recovery'),
+        'value' => t('Local Drupal login remains available at /user/login.'),
+        'severity' => REQUIREMENT_INFO]];
+}

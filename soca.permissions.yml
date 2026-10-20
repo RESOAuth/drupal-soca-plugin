@@ -1,0 +1,3 @@
+administer soca:
+  title: Administer SOCA sign-in
+  restrict access: true

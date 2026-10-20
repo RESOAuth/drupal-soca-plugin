@@ -1,0 +1,5 @@
+soca.settings:
+  title: 'SOCA sign-in'
+  description: 'Configure and test CIMD sign-in.'
+  parent: user.admin_index
+  route_name: soca.settings

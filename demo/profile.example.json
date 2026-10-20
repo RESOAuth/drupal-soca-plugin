@@ -1,0 +1,11 @@
+{
+  "enabled": false,
+  "provisioning": false,
+  "issuer": "https://auth.resoauth.cloud",
+  "origin": "https://your-app.example.com",
+  "metadata_mode": "hosted",
+  "allowed_domains": [
+    "example.com"
+  ],
+  "denied_domains": []
+}
