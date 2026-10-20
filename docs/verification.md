@@ -7,6 +7,7 @@ Version 0.1.0, assessed 2026-10-21 against `RESOAuth/soca-plugins` requirements 
 | Protocol | `composer install && php tests/core.php` | 129 assertions pass on PHP 8.3; ES256, ES384, RS256 in hosted and proxy modes; signed synthetic provider |
 | Host bridge | `php tests/bridge.php` | 18 assertions pass; revision gates, side-effect-free tests, changed operator/policy, replay, deployment overrides and emergency disable |
 | Native host | `CONTAINER_ENGINE=podman bash demo/run.sh test` | 12 assertions pass using Drupal 11.4.10 on PHP 8.3 in a disposable container; native account, database replay and session APIs |
+| Public HTTP routes | `python3 tests/http_smoke.py`, run automatically by the demo | 8 assertions pass for native login link, exact CIMD/callback URLs and public JWKS |
 | PHP syntax | CI recursive `php -l` | Local syntax checks pass |
 | Packaging | `python3 bin/package.py`; `cd build && sha256sum -c SHA256SUMS` | Installable package and CycloneDX inventory generated from Composer lock |
 
